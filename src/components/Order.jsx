@@ -9,7 +9,7 @@ function Order ({ details }) {
 
         <h2>{details.fullname}</h2>
         
-        <p>Married: {details.size ? 'Small' : 'Large'}</p>
+        <p>Size: {details.size ? 'Small' : 'Large'}</p>
   
         {
           !!details.toppings && !!details.toppings.length &&
