@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuid } from 'uuid'
 import { Route, Switch, Link } from 'react-router-dom';
+import styled from 'styled-components'
 import axios from 'axios'
 import * as yup from 'yup'
-// import Homepage from "./components/Homepage";
 import PizzaForm from './components/PizzaForm'
 import Order from './components/Order'
+import homepage from './Assets/homepage.jpg'
+
+
+const Homepage = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`;
+
 
 const url = 'https://reqres.in/api/users'
 
@@ -46,7 +55,8 @@ const url = 'https://reqres.in/api/users'
     .required('pizza size is required'),
     special: yup
     .string()
-    .min(2, 'at least 2 letters for special instructions is required')
+    .min(2, 'at least 2 letters for special instructions is required'),
+    
   })
 
 const App = () => {
@@ -153,8 +163,12 @@ const onSubmit = evt => {
         </Route>
         
         <Route path='/'>
-          <h1>Mario's Pizza</h1>
-          <Link to="/pizza"><h2>Order Now</h2></Link>
+          <Homepage>
+            <h1>Mario's Pizza</h1>
+            <img src={homepage} height='250' width='500' />
+            <Link to="/pizza"><h2>Order Now</h2></Link>
+          </Homepage>
+
         </Route>
 
       </Switch>
